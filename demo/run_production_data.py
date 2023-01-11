@@ -68,8 +68,8 @@ def main():
         re_estimation_method=ReEstimationMethod.MEDIAN,
         concurrency_oracle_type=ConcurrencyOracleType.HEURISTICS,
         resource_availability_type=ResourceAvailabilityType.SIMPLE,
-        heuristics_thresholds=HeuristicsThresholds(df=0.9, l2l=0.9),
-        outlier_statistic=OutlierStatistic.MEDIAN,
+        heuristics_thresholds=HeuristicsThresholds(df=0.1, l2l=0.1),
+        outlier_statistic=OutlierStatistic.MODE,
         outlier_threshold=outlier_threshold
     )
     run_estimation("../event_logs/Production_Data.csv", config,

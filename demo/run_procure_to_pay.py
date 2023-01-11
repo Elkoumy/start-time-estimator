@@ -52,7 +52,7 @@ def timestamp_to_string(dates: pd.Series) -> pd.Series:
                 dates.apply(lambda x: x.strftime("%z") if not pd.isnull(x) else '').apply(lambda x: x[-2:]))
 
 def main():
-    outlier_threshold = 2.0
+    outlier_threshold = 1.0
     folder = "heur-median"
 
 
@@ -69,13 +69,13 @@ def main():
         re_estimation_method=ReEstimationMethod.MEDIAN,
         concurrency_oracle_type=ConcurrencyOracleType.HEURISTICS,
         resource_availability_type=ResourceAvailabilityType.SIMPLE,
-        heuristics_thresholds=HeuristicsThresholds(df=0.9, l2l=0.9),
+        heuristics_thresholds=HeuristicsThresholds(df=0.1, l2l=0.1),
         instant_activities={"Send invoice", " Choose best option"},
-        outlier_statistic=OutlierStatistic.MEDIAN,
+        outlier_statistic=OutlierStatistic.MODE,
         outlier_threshold=outlier_threshold
     )
     run_estimation("../event_logs/Procure-to-Pay.csv", config,
-                   "../event_logs/Procure-to-Pay_estimated.csv".format(folder))
+                   "../event_logs/Procure-to-Pay_estimated_low_h.csv".format(folder))
 
 
 
