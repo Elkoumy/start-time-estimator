@@ -23,6 +23,7 @@ class ResourceAvailability:
             timestamp_previous_event = event[self.log_ids.end_time]
         else:
             # If not, take the first timestamp previous to [timestamp]
+            resource=str(resource)
             resource_calendar = self.resources_calendar[resource]
             timestamp_previous_event = resource_calendar.where(
                 (resource_calendar < event[self.log_ids.end_time]) &
