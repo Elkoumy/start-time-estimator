@@ -71,10 +71,11 @@ def main():
         resource_availability_type=ResourceAvailabilityType.SIMPLE,
         heuristics_thresholds=HeuristicsThresholds(df=0.9, l2l=0.9),
         outlier_statistic=OutlierStatistic.MEDIAN,
+        bot_resources={"Pharmacy System-000001"},
         outlier_threshold=outlier_threshold
     )
-    run_estimation("../event_logs/Procure-to-Pay.csv", config,
-                   "../event_logs/Procure-to-Pay_estimated.csv".format(folder))
+    run_estimation("../event_logs/cvs_pharmacy.csv.gz", config,
+                   "../event_logs/cvs_pharmacy_estimated.csv".format(folder))
 
 
 
